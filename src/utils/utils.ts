@@ -133,3 +133,20 @@ export function createElement<
     }
     return element;
 }
+
+/**
+ * Функция для того чтобы облегчить
+ * чтение крупных сумм
+ */
+
+export function handlePrice(price: number): string {
+    const priceString = price.toString();
+    return priceString.length < 5
+      ? priceString
+      : priceString
+        .split('')
+        .reverse()
+        .map((s, i) => ((i + 1) % 3 === 0 ? ' ' + s : s))
+        .reverse()
+        .join('');
+  }

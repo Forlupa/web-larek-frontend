@@ -5,8 +5,16 @@ export type CategoryType =
   | 'кнопка'
   | 'хард-скил';
 
+  export type CategoryList = {
+    [Key in CategoryType]: string;
+  };
 
-export type FormErrors = Partial<Record<keyof TOrderForm, string>>;  
+  export interface ApiResponse {
+    items: ICard[];
+  };
+  
+
+export type FormErrors = Partial<Record<keyof TOrderInfo, string>>;  
 
 export interface ICard {
   id: string;
@@ -43,6 +51,7 @@ export interface IStoreData {
   checkContactsValidation(data: Record<keyof TContactsForm, string>): boolean;
   clearOrder(): boolean;
 }
+
 
 
 export type TOrderInfo = Pick<IOrder, "payment" | "email" | "phone" | "address">;
