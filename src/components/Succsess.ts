@@ -27,6 +27,6 @@ export class Success extends Component<ISuccess> {
   }
 
   set bill(value: number) {
-    this._bill.textContent = 'Списано ' + handlePrice(value) + ' синапсов'
+    this.setText(this._bill, 'Списано ' + handlePrice(value) + ' синапсов')
   }
 }

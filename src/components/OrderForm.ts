@@ -16,18 +16,23 @@ export class OrderForm extends Form<TOrderForm> {
 
     if (this._cash) {
       this._cash.addEventListener('click', () => {
-        this._cash.classList.add('button_alt-active')
-        this._cashless.classList.remove('button_alt-active')
+        this.toggleClass(this._cash, 'button_alt-active');
+        this.toggleClass(this._cashless, 'button_alt-active');
         this.onInputChange('payment', 'cash')
       })
     }
     if (this._cashless) {
       this._cashless.addEventListener('click', () => {
-        this._cashless.classList.add('button_alt-active')
-        this._cash.classList.remove('button_alt-active')
+        this.toggleClass(this._cashless, 'button_alt-active');
+        this.toggleClass(this._cash, 'button_alt-active');
         this.onInputChange('payment', 'card')
       })
     }
   }
+
+  set address(value: string) {
+		(this.container.elements.namedItem('address') as HTMLInputElement).value =
+			value;
+	}
 
 }

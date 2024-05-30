@@ -9,8 +9,8 @@ export const settings = {
 
 export const categoryList: CategoryList = {
   другое: 'card__category_other',
-  'софт-скил': 'card__category_soft',
+  софт: 'card__category_soft',
   дополнительное: 'card__category_additional',
   кнопка: 'card__category_button',
-  'хард-скил': 'card__category_hard',
+  хард: 'card__category_hard',
 };
