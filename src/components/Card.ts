@@ -74,16 +74,25 @@ export class Card extends Component<ICard> {
       ? handlePrice(value) + ' синапсов'
       : 'Бесценно';
     if (this._button && !value) {
-      this._button.disabled = true;
+      this.setDisabled(this._button, true);
+    }
+  }
+
+  set selected(value: boolean) {
+    if (!this._button.disabled) {
+      this.setDisabled(this._button, value);
     }
   }
 
 }
 
+
 export class CatalogItem extends Card {
   constructor(container: HTMLElement, actions?: ICardActions){
     super('card', container, actions);
+
   }
+  
 }
 
 export class CatalogItemPreview extends Card {

@@ -1,6 +1,6 @@
 import { handlePrice } from '../../utils/utils';
 import { Component } from '../base/Component';
-import { IEvents } from '../base/events';
+import { IEvents } from '../base/Events';
 import { ICard } from '../../types';
 
 
@@ -30,7 +30,11 @@ export class Basket extends Component<IBasketView> {
 
   set list(items: HTMLElement[]) {
     this._list.replaceChildren(...items);
-    this.button.disabled = items.length ? false : true;
+    if (items.length) {
+      this.setDisabled(this.button, false);
+    } else {
+      this.setDisabled(this.button, true);
+  }
   }
 
   set totalPrice(price: number) {

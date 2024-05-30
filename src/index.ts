@@ -1,6 +1,6 @@
 import './scss/styles.scss';
-import { EventEmitter } from './components/base/events';
-import { Api, ApiListResponse } from './components/base/api';
+import { EventEmitter } from './components/base/Events';
+import { Api, ApiListResponse } from './components/base/Api';
 import { AppState, Product, CatalogChangeEvent } from './components/AppData';
 import { Page } from './components/Page';
 import { CatalogItem, CatalogItemPreview } from './components/Card';
@@ -102,6 +102,7 @@ events.on('modal:close', () => {
 
 // Добавить товар в корзину
 events.on('card:toBasket', (item: Product) => {
+  item.selected = true;
   appData.addToBasket(item);
   page.counter = appData.getBasketLength();
   modal.close();
