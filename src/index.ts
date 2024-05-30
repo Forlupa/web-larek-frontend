@@ -4,14 +4,14 @@ import { Api, ApiListResponse } from './components/base/Api';
 import { AppState, Product, CatalogChangeEvent } from './components/AppData';
 import { Page } from './components/Page';
 import { CatalogItem, CatalogItemPreview } from './components/Card';
-import { Basket, BasketItem } from './components/common/Basket';
+import { Basket, BasketItem } from './components/Basket';
 import { Modal } from './components/common/Modal';
 import { ensureElement, cloneTemplate } from './utils/utils';
 import { TOrderForm, TContactsForm, TOrderInfo, ICard, ApiResponse } from './types';
 import { API_URL } from './utils/constants';
 import { OrderForm } from './components/OrderForm';
 import { ContactsForm } from './components/ContactsForm';
-import { Success } from './components/common/Succsess';
+import { Success } from './components/Succsess';
 
 const api = new Api(API_URL);
 const events = new EventEmitter();
@@ -141,7 +141,7 @@ events.on('basket:delete', (item: Product) => {
   page.counter = appData.getBasketLength();
   basket.updateIndexes();
   if (appData.basket.length === 0) {
-    basket.disableButton();
+    basket.toggleButton(true);
   }
 })
 
@@ -165,7 +165,7 @@ events.on('orderFormErrors:change', (errors: Partial<TOrderForm>) => {
 });
 
 // Изменились введенные данные
-events.on('orderInput:change', (data: { field: keyof TOrderInfo, value: string }) => {
+events.on(/^order\..*:change/, (data: { field: keyof TOrderInfo, value: string }) => {
   appData.setOrderForm(data.field, data.value);
 });
 
@@ -189,6 +189,12 @@ events.on('contactsFormErrors:change', (errors: Partial<TContactsForm>) => {
   contacts.valid = !email && !phone;
   contacts.errors = Object.values({ phone, email }).filter(i => !!i).join('; ');
 });
+
+// Изменились введенные данные
+events.on(/^contacts\..*:change/, (data: { field: keyof TOrderInfo, value: string }) => {
+  appData.setOrderForm(data.field, data.value);
+});
+
 
 // Оформить заказ
 events.on('contacts:submit', () => {

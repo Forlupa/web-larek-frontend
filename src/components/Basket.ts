@@ -1,7 +1,7 @@
-import { handlePrice } from '../../utils/utils';
-import { Component } from '../base/Component';
-import { IEvents } from '../base/Events';
-import { ICard } from '../../types';
+import { handlePrice } from '../utils/utils';
+import { Component } from './base/Component';
+import { IEvents } from './base/Events';
+import { ICard } from '../types';
 
 
 export interface IBasketView {
@@ -38,7 +38,7 @@ export class Basket extends Component<IBasketView> {
   }
 
   set totalPrice(price: number) {
-    this._price.textContent = handlePrice(price) + ' синапсов';
+    this.setText(this._price, handlePrice(price) + ' синапсов');
   }
 
   updateIndexes() {
@@ -50,9 +50,9 @@ export class Basket extends Component<IBasketView> {
     );
   }
  
-  disableButton() {
-    this.button.disabled = true
-  }
+  toggleButton(state: boolean) {
+    this.setDisabled(this.button, state);
+} 
 }
 
 export interface IBasketItem extends ICard {
@@ -87,14 +87,14 @@ export class BasketItem extends Component<IBasketItem> {
   }
 
   set title(value: string) {
-    this._title.textContent = value;
+    this.setText(this._title, value);
   }
 
   set index(value: number) {
-    this._index.textContent = value.toString();
+    this.setText(this._index, value.toString());
   }
 
   set price(value: number) {
-    this._price.textContent = handlePrice(value) + ' синапсов';
+    this.setText(this._price, handlePrice(value) + ' синапсов');
   }
 }

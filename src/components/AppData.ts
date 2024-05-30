@@ -1,4 +1,4 @@
-import { IOrder, TOrderInfo, ICard, FormErrors, TOrderForm } from '../types';
+import { IOrder, TOrderInfo, ICard, FormErrors } from '../types';
 import { Model } from './base/Model';
 import { IStoreData } from '../types';
 
