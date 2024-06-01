@@ -1,9 +1,9 @@
 export type CategoryType =
-  | 'софт'
+  | 'софт-скил'
   | 'другое'
   | 'дополнительное'
   | 'кнопка'
-  | 'хард';
+  | 'хард-скил';
 
   export type CategoryList = {
     [Key in CategoryType]: string;

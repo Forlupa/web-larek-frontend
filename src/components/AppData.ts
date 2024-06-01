@@ -41,6 +41,7 @@ export class AppState extends Model<IStoreData> {
 
   deleteFromBasket(id: string) {
     this.basket = this.basket.filter(item => item.id !== id)
+    this.emitChanges('basket:open', { store: this.cards });
   }
 
   clearBasket() {

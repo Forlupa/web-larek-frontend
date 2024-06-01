@@ -12,6 +12,11 @@ export abstract class Component<T> {
     element.textContent = String(value);
   }
 
+  // Получить текстовое содержимое
+  protected getText(element: HTMLElement): string {
+   return element.textContent;
+  }
+
   // Установить изображение с алтернативным текстом
   protected setImage(el: HTMLImageElement, src: string, alt?: string): void {
     el.src = src;

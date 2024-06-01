@@ -84,13 +84,13 @@ events.on('card:select', (item: Product) => {
   });
   modal.render({
     content: product.render({
-      id: item.id,
-      title: item.title,
-      image: item.image,
-      category: item.category,
-      description: item.description,
-      price: item.price,
-      selected: item.selected
+    id: item.id,
+    title: item.title,
+    image: item.image,
+    category: item.category,
+    description: item.description,
+    price: item.price,
+    selected: item.selected
     }),
   });
 });
@@ -139,7 +139,6 @@ events.on('basket:delete', (item: Product) => {
   item.selected = false;
   basket.totalPrice = appData.getTotalPrice();
   page.counter = appData.getBasketLength();
-  basket.updateIndexes();
   if (appData.basket.length === 0) {
     basket.toggleButton(true);
   }

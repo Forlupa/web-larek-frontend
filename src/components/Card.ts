@@ -56,8 +56,8 @@ export class Card extends Component<ICard> {
   set title(value: string) {
     this.setText(this._title, value);
   }
-  get title(): string {
-    return this._title.textContent || '';
+  get title(): string {  
+    return this.getText(this._title) || '';
   }
 
   set image(value: string) {
