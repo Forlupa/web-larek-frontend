@@ -70,9 +70,14 @@ export class Card extends Component<ICard> {
   }
 
   set price(value: number | null) {
-    this._price.textContent = value 
-      ? handlePrice(value) + ' синапсов'
-      : 'Бесценно';
+    
+      if (this._price && value) {
+        this.setText(this._price, handlePrice(value) + ' синапсов') 
+      }else{
+        this.setText(this._price, 'Бесценно') 
+      }
+      
+
     if (this._button && !value) {
       this.setDisabled(this._button, true);
     }

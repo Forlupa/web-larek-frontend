@@ -8,7 +8,7 @@ export abstract class Component<T> {
   }
 
   // Установить текстовое содержимое
-  protected setText(element: HTMLElement, value: string): void {
+  protected setText(element: HTMLElement, value: string | number): void {
     element.textContent = String(value);
   }
 
